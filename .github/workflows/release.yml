@@ -1,0 +1,40 @@
+name: Build release zip
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build plugin zip
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          # git archive honours .gitattributes export-ignore, so dev files
+          # (.wp-test, .github, .gitignore, .gitattributes) are excluded and
+          # everything is wrapped in the plugin slug folder.
+          git archive --format=zip \
+            --prefix="billionverify-email-validator/" \
+            -o "billionverify-email-validator-${version}.zip" \
+            "${GITHUB_REF_NAME}"
+          echo "ASSET=billionverify-email-validator-${version}.zip" >> "$GITHUB_ENV"
+
+      - name: Create or update release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "${GITHUB_REF_NAME}" >/dev/null 2>&1; then
+            gh release upload "${GITHUB_REF_NAME}" "${ASSET}" --clobber
+          else
+            gh release create "${GITHUB_REF_NAME}" "${ASSET}" \
+              --title "${GITHUB_REF_NAME}" \
+              --generate-notes
+          fi
