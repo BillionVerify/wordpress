@@ -42,7 +42,7 @@ $bvev_status_labels = array(
 						printf(
 							/* translators: %s: dashboard URL. */
 							wp_kses_post( __( 'Find your API key in the <a href="%s" target="_blank" rel="noopener">BillionVerify dashboard</a>.', 'billionverify-email-validator' ) ),
-							'https://app.billionverify.com/'
+							'https://billionverify.com/home'
 						);
 						?>
 					</p>
