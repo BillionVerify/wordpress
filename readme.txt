@@ -45,7 +45,7 @@ This plugin sends email addresses to the BillionVerify API (https://billionverif
 * Verify an email address: https://api.billionverify.com/v1/verify/single
 * Retrieve credit balance: https://api.billionverify.com/v1/credits
 
-By installing and activating this plugin, you consent to the transmission of submitted email addresses to these URLs for the purpose of verification. Use of the BillionVerify service is subject to BillionVerify's Terms of Service and Privacy Policy at https://billionverify.com/.
+By installing and activating this plugin, you consent to the transmission of submitted email addresses to these URLs for the purpose of verification. Use of the BillionVerify service is subject to BillionVerify's Terms of Service (https://billionverify.com/terms) and Privacy Policy (https://billionverify.com/privacy).
 
 == Installation ==
 
