@@ -1,7 +1,6 @@
 <?php
 /**
  * Plugin Name:       BillionVerify Email Validator
- * Plugin URI:        https://billionverify.com/
  * Description:       Real-time email verification for your WordPress forms. Blocks invalid, disposable and risky email addresses on registration, comments, WooCommerce checkout, Contact Form 7, WPForms, Gravity Forms, Elementor and Fluent Forms using the BillionVerify API.
  * Version:           1.0.0
  * Requires at least: 4.7
