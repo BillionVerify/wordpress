@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$status_labels = array(
+$bvev_status_labels = array(
 	'invalid'    => __( 'Invalid (undeliverable mailbox)', 'billionverify-email-validator' ),
 	'disposable' => __( 'Disposable / temporary domains', 'billionverify-email-validator' ),
 	'catchall'   => __( 'Catch-all domains', 'billionverify-email-validator' ),
@@ -65,11 +65,11 @@ $status_labels = array(
 				<th scope="row"><?php esc_html_e( 'Block these statuses', 'billionverify-email-validator' ); ?></th>
 				<td>
 					<fieldset>
-						<?php foreach ( $status_labels as $status => $label ) : ?>
+						<?php foreach ( $bvev_status_labels as $bvev_status => $bvev_label ) : ?>
 							<label class="bvev-block">
-								<input type="checkbox" name="block_statuses[<?php echo esc_attr( $status ); ?>]" value="1"
-									<?php checked( ! empty( $settings['block_statuses'][ $status ] ) ); ?> />
-								<?php echo esc_html( $label ); ?>
+								<input type="checkbox" name="block_statuses[<?php echo esc_attr( $bvev_status ); ?>]" value="1"
+									<?php checked( ! empty( $settings['block_statuses'][ $bvev_status ] ) ); ?> />
+								<?php echo esc_html( $bvev_label ); ?>
 							</label><br />
 						<?php endforeach; ?>
 						<p class="description"><?php esc_html_e( 'A submission is rejected when its email resolves to a checked status. "valid" is always accepted.', 'billionverify-email-validator' ); ?></p>
@@ -101,14 +101,14 @@ $status_labels = array(
 				<th scope="row"><?php esc_html_e( 'Enable validation for', 'billionverify-email-validator' ); ?></th>
 				<td>
 					<fieldset>
-						<?php foreach ( $integrations as $key => $integration ) : ?>
-							<?php $available = $integration->is_available(); ?>
-							<label class="bvev-integration<?php echo $available ? '' : ' bvev-unavailable'; ?>">
-								<input type="checkbox" name="integrations[<?php echo esc_attr( $key ); ?>]" value="1"
-									<?php checked( ! empty( $settings['integrations'][ $key ] ) ); ?>
-									<?php disabled( ! $available ); ?> />
-								<?php echo esc_html( $integration->label() ); ?>
-								<?php if ( ! $available ) : ?>
+						<?php foreach ( $integrations as $bvev_key => $bvev_integration ) : ?>
+							<?php $bvev_available = $bvev_integration->is_available(); ?>
+							<label class="bvev-integration<?php echo $bvev_available ? '' : ' bvev-unavailable'; ?>">
+								<input type="checkbox" name="integrations[<?php echo esc_attr( $bvev_key ); ?>]" value="1"
+									<?php checked( ! empty( $settings['integrations'][ $bvev_key ] ) ); ?>
+									<?php disabled( ! $bvev_available ); ?> />
+								<?php echo esc_html( $bvev_integration->label() ); ?>
+								<?php if ( ! $bvev_available ) : ?>
 									<span class="bvev-badge"><?php esc_html_e( 'not installed', 'billionverify-email-validator' ); ?></span>
 								<?php endif; ?>
 							</label><br />

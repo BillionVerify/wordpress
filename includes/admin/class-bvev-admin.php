@@ -114,12 +114,12 @@ class BVEV_Admin {
 		$out['cache_ttl']     = isset( $_POST['cache_ttl'] ) ? max( 0, (int) $_POST['cache_ttl'] ) : $defaults['cache_ttl'];
 		$out['block_message'] = isset( $_POST['block_message'] ) ? sanitize_text_field( wp_unslash( $_POST['block_message'] ) ) : $defaults['block_message'];
 
-		$posted_statuses = isset( $_POST['block_statuses'] ) && is_array( $_POST['block_statuses'] ) ? wp_unslash( $_POST['block_statuses'] ) : array();
+		$posted_statuses = isset( $_POST['block_statuses'] ) && is_array( $_POST['block_statuses'] ) ? map_deep( wp_unslash( $_POST['block_statuses'] ), 'sanitize_text_field' ) : array();
 		foreach ( $out['block_statuses'] as $status => $unused ) {
 			$out['block_statuses'][ $status ] = isset( $posted_statuses[ $status ] ) ? 1 : 0;
 		}
 
-		$posted_integrations = isset( $_POST['integrations'] ) && is_array( $_POST['integrations'] ) ? wp_unslash( $_POST['integrations'] ) : array();
+		$posted_integrations = isset( $_POST['integrations'] ) && is_array( $_POST['integrations'] ) ? map_deep( wp_unslash( $_POST['integrations'] ), 'sanitize_text_field' ) : array();
 		foreach ( $out['integrations'] as $key => $unused ) {
 			$out['integrations'][ $key ] = isset( $posted_integrations[ $key ] ) ? 1 : 0;
 		}
@@ -149,7 +149,8 @@ class BVEV_Admin {
 	public function ajax_test_connection() {
 		$this->guard_ajax();
 
-		$api_key = isset( $_POST['api_key'] ) ? sanitize_text_field( wp_unslash( $_POST['api_key'] ) ) : '';
+		// Nonce verified in guard_ajax() above.
+		$api_key = isset( $_POST['api_key'] ) ? sanitize_text_field( wp_unslash( $_POST['api_key'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		if ( '' === $api_key ) {
 			$api_key = (string) BVEV_Settings::get( 'api_key', '' );
 		}
@@ -181,7 +182,8 @@ class BVEV_Admin {
 	public function ajax_test_email() {
 		$this->guard_ajax();
 
-		$email = isset( $_POST['email'] ) ? sanitize_email( wp_unslash( $_POST['email'] ) ) : '';
+		// Nonce verified in guard_ajax() above.
+		$email = isset( $_POST['email'] ) ? sanitize_email( wp_unslash( $_POST['email'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		if ( '' === $email || ! is_email( $email ) ) {
 			wp_send_json_error( array( 'message' => __( 'Please enter a valid email address to test.', 'billionverify-email-validator' ) ) );
 		}

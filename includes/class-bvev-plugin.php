@@ -64,7 +64,6 @@ class BVEV_Plugin {
 			new BVEV_Admin( $this->verifier, $this->integrations );
 		}
 
-		add_action( 'init', array( $this, 'load_textdomain' ) );
 		add_filter( 'plugin_action_links_' . BVEV_PLUGIN_BASENAME, array( $this, 'action_links' ) );
 	}
 
@@ -84,15 +83,6 @@ class BVEV_Plugin {
 	 */
 	public function integrations() {
 		return $this->integrations;
-	}
-
-	/**
-	 * Load translations.
-	 *
-	 * @return void
-	 */
-	public function load_textdomain() {
-		load_plugin_textdomain( 'billionverify-email-validator', false, dirname( BVEV_PLUGIN_BASENAME ) . '/languages' );
 	}
 
 	/**

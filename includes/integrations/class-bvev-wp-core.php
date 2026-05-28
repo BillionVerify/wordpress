@@ -142,7 +142,7 @@ class BVEV_Integration_WP_Lost_Password extends BVEV_Integration_Base {
 	 * @return void
 	 */
 	public function validate( $errors ) {
-		$login = isset( $_POST['user_login'] ) ? trim( wp_unslash( $_POST['user_login'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$login = isset( $_POST['user_login'] ) ? sanitize_text_field( wp_unslash( $_POST['user_login'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		if ( '' === $login || ! is_email( $login ) ) {
 			return;
 		}
