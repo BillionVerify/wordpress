@@ -2,9 +2,9 @@
 Contributors: ikbear
 Tags: email validator, email verifier, form validation, spam protection, user registration
 Requires at least: 4.7
-Tested up to: 6.7
+Tested up to: 7.0
 Requires PHP: 7.0
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -75,6 +75,9 @@ Each unique address is verified once and cached for the lifetime you configure, 
 No. Enable the integrations you want in Settings → BillionVerify and the plugin hooks into those forms automatically.
 
 == Changelog ==
+
+= 1.0.3 =
+* Updated "Tested up to" to WordPress 7.0 (the current release).
 
 = 1.0.2 =
 * Removed the pending "billionverify" account from the contributors list (will be re-added once the WordPress.org brand account is approved).
