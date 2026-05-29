@@ -2,7 +2,7 @@
 Contributors: billionverify, ikbear
 Tags: email validator, email verifier, form validation, spam protection, user registration
 Requires at least: 4.7
-Tested up to: 7.0
+Tested up to: 6.7
 Requires PHP: 7.0
 Stable tag: 1.0.1
 License: GPLv2 or later
