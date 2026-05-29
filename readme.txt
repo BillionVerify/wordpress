@@ -1,10 +1,10 @@
 === BillionVerify Email Validator ===
-Contributors: billionverify
+Contributors: billionverify, ikbear
 Tags: email validator, email verifier, form validation, spam protection, user registration
 Requires at least: 4.7
 Tested up to: 7.0
 Requires PHP: 7.0
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -75,6 +75,9 @@ Each unique address is verified once and cached for the lifetime you configure, 
 No. Enable the integrations you want in Settings → BillionVerify and the plugin hooks into those forms automatically.
 
 == Changelog ==
+
+= 1.0.1 =
+* Added ikbear to the contributors list.
 
 = 1.0.0 =
 * Initial release.
